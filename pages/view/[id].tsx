@@ -15,7 +15,7 @@ export default function View() {
   const [post, setPost] = useState<Post | null>(null);
 
   useEffect(() => {
-    // Fetch the post data from your API
+    // Fetch the post data from API
     fetch(`/api/user/${id}`)
       .then((response) => response.json())
       .then((data: Post) => setPost(data));

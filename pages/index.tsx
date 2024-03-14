@@ -32,7 +32,6 @@ export default function Home() {
 
   // Function to open the Cloudinary upload widget
   const openWidget = () => {
-    // @ts-ignore
     window.cloudinary.openUploadWidget(
       {
         cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -57,7 +56,7 @@ export default function Home() {
       formData.append("description", description);
       formData.append("ageRange", ageRange);
 
-      // Send a POST request to your API endpoint
+      // Send a POST request to the API endpoint
       const response = await fetch("/api/user", {
         method: "POST",
         body: formData,
