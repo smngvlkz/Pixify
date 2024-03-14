@@ -32,6 +32,7 @@ export default function Home() {
 
   // Function to open the Cloudinary upload widget
   const openWidget = () => {
+    // @ts-ignore
     window.cloudinary.openUploadWidget(
       {
         cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
