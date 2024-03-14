@@ -2,6 +2,7 @@
 import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import "../styles/globals.css";
+import { Data } from "./api/user";
 interface CloudinaryResult {
   event: string;
   info: {
@@ -48,19 +49,25 @@ export default function Home() {
   };
 
   // Function to handle form submission
-  const handleSubmit = async (event: FormEvent) => {
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     event.preventDefault();
     try {
-      // FormData instance for the form data
-      const formData = new FormData();
-      formData.append("imageUrl", imageUrl);
-      formData.append("description", description);
-      formData.append("ageRange", ageRange);
+      // Create an object for the form data
+      const data = {
+        imageUrl,
+        description,
+        ageRange,
+      };
 
       // Send a POST request to the API endpoint
       const response = await fetch("/api/user", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
@@ -68,7 +75,7 @@ export default function Home() {
       }
 
       // Handle the response
-      const data = await response.json();
+      const responseData: Data = await response.json();
       // If the upload was successful, clear the form
       setImageUrl("");
       setDescription("");
@@ -76,7 +83,7 @@ export default function Home() {
       alert("Image uploaded successfully!");
 
       // Navigate to the view page for the uploaded image
-      router.push(`/view/${data.id}`);
+      router.push(`/view/${responseData.id}`);
     } catch (error) {
       console.error(error);
       alert("Upload failed");
