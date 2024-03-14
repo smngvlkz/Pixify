@@ -1,3 +1,31 @@
+## TODOS
+
+1. Frontend - Home Page:
+
+- Create a form with an image upload input(use uploadthing or cloudinary), a text area for descriptive text, and a dropdown for age range.
+- Use Tailwind to make it responsive
+- Implement client-side validation to ensure all fields are filled before submission
+
+2. Backend:
+
+- Set up prisma schema for database with fields for image URL, description, and age range (Planetscale)
+- Write API routes to handle the CRUD operations.
+- Image storage (Cloudinary or Uploadthing)
+
+3. Frontend - View Page:
+
+- Retrieve the uploaded data from the backend and display it.
+- Implement a grid layout using Tailwind.
+
+4. User Feedback:
+
+- Alert user when image upload is complete.
+- Add a loading spinner.
+
+5. Optimization:
+
+- Ensure fast data retrieval
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
