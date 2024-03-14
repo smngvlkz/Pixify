@@ -1,5 +1,3 @@
-"use client";
-import { getPost } from "@/lib/db";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -16,7 +14,9 @@ export default function View() {
   const [post, setPost] = useState<Post | null>(null);
 
   useEffect(() => {
-    getPost(Number(id)).then(setPost);
+    fetch(`/api/user?id=${id}`)
+      .then((response) => response.json())
+      .then(setPost);
   }, [id]);
 
   if (!post) {
@@ -54,7 +54,13 @@ export default function View() {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "10px",
+      }}
+    >
       <img src={post.imageUrl} alt="Post Image" />
       <p>{post.description}</p>
       <p>{post.ageRange}</p>
