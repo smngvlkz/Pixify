@@ -82,8 +82,11 @@ export default function Home() {
       setAgeRange("");
       alert("Image uploaded successfully!");
 
-      // Navigate to the view page for the uploaded image
-      router.push(`/view/${responseData.id}`);
+      // Wait for the response before redirecting
+      if (responseData && responseData.id) {
+        // Navigate to the view page for the uploaded image
+        router.push(`/view/${responseData.id}`);
+      }
     } catch (error) {
       console.error(error);
       alert("Upload failed");
