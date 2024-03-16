@@ -57,13 +57,20 @@ export default function View() {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
+        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
         gap: "10px",
       }}
     >
       <img src={post.imageUrl} alt="Post Image" />
       <p>{post.description}</p>
       <p>{post.ageRange}</p>
+      <style jsx>{`
+        @media (max-width: 600px) {
+          div {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
