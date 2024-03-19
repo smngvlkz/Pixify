@@ -1,3 +1,5 @@
+## This is a take-home assignment I received in an interview 
+
 ## TODOS
 
 1. Frontend - Home Page:
