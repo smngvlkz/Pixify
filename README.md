@@ -1,4 +1,4 @@
-## This is a take-home assignment I received in an interview 
+## This is a take-home assignment I received in an interview for Junior Backend Developer role 
 
 ## TODOS
 
